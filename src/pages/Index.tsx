@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronDown, Play, MapPin, Home, Trees, Bath, Bed, Waves, Wifi, Wind, MessageCircle, ExternalLink } from "lucide-react";
+import { ChevronDown, MapPin, Home, Trees, Bath, Bed, Waves, Wifi, Wind, MessageCircle } from "lucide-react";
 import { Nav } from "@/components/Nav";
 import { Reveal } from "@/components/Reveal";
 import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
@@ -316,38 +316,24 @@ const Index = () => {
             </div>
           </Reveal>
 
-          {/* Mapa de localização */}
-          <Reveal delay={2} className="mt-20 grid lg:grid-cols-12 gap-10 items-center">
-            <div className="lg:col-span-5">
-              <p className="eyebrow mb-4">Localização</p>
-              <h3 className="font-serif text-3xl md:text-4xl text-coffee leading-tight">
-                Rodovia SP-191, <span className="italic">Charqueada-SP</span>
-              </h3>
-              <p className="mt-4 text-muted-foreground font-light">
-                Charqueada — São Paulo. A 5 minutos do centro da cidade, com acesso a comércio, serviços, escolas e internet rápida.
-              </p>
-              <a
-                href="https://www.google.com/maps/search/?api=1&query=Rodovia+SP-191,+Charqueada+-+SP"
-                target="_blank"
-                rel="noreferrer"
-                className="mt-6 inline-flex items-center gap-2 text-gold hover:text-coffee transition-colors text-sm uppercase tracking-[0.25em] font-medium"
-              >
-                Ver no Google Maps <ExternalLink className="h-4 w-4" />
-              </a>
-            </div>
-            <div className="lg:col-span-7">
-              <div className="aspect-[4/3] w-full shadow-elegant overflow-hidden bg-muted">
-                <iframe
-                  title="Mapa personalizado do sítio"
-                  src="https://www.google.com/maps/d/u/0/embed?mid=1UFu7jrA7pxEXZf-ogAnqOqy7zNKzvSQ&ehbc=2E312F&noprof=1"
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  loading="lazy"
-                  referrerPolicy="no-referrer-when-downgrade"
-                />
-              </div>
-            </div>
+          {/* Contato para localização */}
+          <Reveal delay={2} className="mt-20 max-w-2xl mx-auto text-center">
+            <p className="eyebrow mb-4">Localização</p>
+            <h3 className="font-serif text-3xl md:text-4xl text-coffee leading-tight">
+              Rodovia SP-191, <span className="italic">Charqueada-SP</span>
+            </h3>
+            <p className="mt-4 text-muted-foreground font-light">
+              Charqueada — São Paulo. A 5 minutos do centro da cidade, com acesso a comércio, serviços, escolas e internet rápida.
+            </p>
+            <a
+              href="https://wa.me/5515991943713?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20s%C3%ADtio%20em%20Charqueada-SP%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20localiza%C3%A7%C3%A3o."
+              target="_blank"
+              rel="noreferrer"
+              className="mt-8 inline-flex items-center gap-2 bg-gold hover:bg-coffee text-cream px-8 py-4 transition-colors text-sm uppercase tracking-[0.2em] font-medium shadow-elegant"
+            >
+              <MessageCircle className="h-4 w-4" />
+              Entre em contato para Saber Mais
+            </a>
           </Reveal>
         </div>
       </section>
