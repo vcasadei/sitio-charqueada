@@ -2,13 +2,19 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const links = [
-  { href: "#inicio", label: "Início" },
-  { href: "#video", label: "Vídeo" },
-  { href: "#sobre", label: "Sobre" },
-  { href: "#galerias", label: "Galerias" },
-  { href: "#vista-aerea", label: "Vista Aérea" },
-  { href: "#contato", label: "Contato" },
+  { id: "inicio", label: "Início" },
+  { id: "video", label: "Vídeo" },
+  { id: "sobre", label: "Sobre" },
+  { id: "galerias", label: "Galerias" },
+  { id: "vista-aerea", label: "Vista Aérea" },
+  { id: "contato", label: "Contato" },
 ];
+
+const scrollToSection = (id: string) => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.scrollIntoView({ behavior: "smooth", block: "start" });
+};
 
 export const Nav = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -28,26 +34,26 @@ export const Nav = () => {
       }`}
     >
       <div className="container-editorial flex items-center justify-between">
-        <a
-          href="#inicio"
-          className={`font-serif text-xl md:text-2xl tracking-wide transition-colors ${
+        <button
+          onClick={() => scrollToSection("inicio")}
+          className={`font-serif text-xl md:text-2xl tracking-wide transition-colors text-left ${
             scrolled ? "text-coffee" : "text-cream"
           }`}
         >
           Sítio <span className="italic text-gold">Charqueada</span>
-        </a>
+        </button>
 
         <nav className="hidden md:flex items-center gap-8">
           {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
+            <button
+              key={l.id}
+              onClick={() => scrollToSection(l.id)}
               className={`text-xs uppercase tracking-[0.25em] font-medium transition-colors hover:text-gold ${
                 scrolled ? "text-coffee/80" : "text-cream/90"
               }`}
             >
               {l.label}
-            </a>
+            </button>
           ))}
         </nav>
 
@@ -64,14 +70,16 @@ export const Nav = () => {
         <div className="md:hidden bg-cream/98 backdrop-blur-md border-t border-border mt-3 animate-fade-in">
           <nav className="container-editorial flex flex-col py-6 gap-4">
             {links.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={() => setOpen(false)}
-                className="text-coffee text-sm uppercase tracking-[0.25em] font-medium py-2"
+              <button
+                key={l.id}
+                onClick={() => {
+                  setOpen(false);
+                  scrollToSection(l.id);
+                }}
+                className="text-coffee text-sm uppercase tracking-[0.25em] font-medium py-2 text-left"
               >
                 {l.label}
-              </a>
+              </button>
             ))}
           </nav>
         </div>
