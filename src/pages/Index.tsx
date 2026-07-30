@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronDown, Play, MapPin, Home, Trees, Bath, Bed, Waves, Wifi, Wind, MessageCircle, ExternalLink } from "lucide-react";
+import { ChevronDown, MapPin, Home, Trees, Bath, Bed, Waves, Wifi, Wind, MessageCircle } from "lucide-react";
 import { Nav } from "@/components/Nav";
 import { Reveal } from "@/components/Reveal";
 import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
