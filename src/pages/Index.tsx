@@ -80,13 +80,13 @@ const Index = () => {
           </Reveal>
         </div>
 
-        <a
-          href="#video"
+        <button
+          onClick={() => document.getElementById("video")?.scrollIntoView({ behavior: "smooth", block: "start" })}
           className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 text-cream/80 animate-scroll-hint"
           aria-label="Rolar para baixo"
         >
           <ChevronDown className="h-7 w-7" />
-        </a>
+        </button>
       </section>
 
       {/* VÍDEO */}
