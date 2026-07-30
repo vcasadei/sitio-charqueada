@@ -1,0 +1,224 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+/* Sítio Charqueada — Editorial luxo, paleta terrosa */
+@layer base {
+  :root {
+    /* Backgrounds */
+    --background: 38 30% 96%;          /* creme suave */
+    --foreground: 25 25% 12%;          /* marrom-café escuro */
+
+    --card: 38 35% 98%;
+    --card-foreground: 25 25% 12%;
+
+    --popover: 38 35% 98%;
+    --popover-foreground: 25 25% 12%;
+
+    /* Verde-oliva profundo como primary */
+    --primary: 82 22% 28%;
+    --primary-foreground: 38 40% 96%;
+
+    /* Marrom quente */
+    --secondary: 28 30% 22%;
+    --secondary-foreground: 38 40% 96%;
+
+    --muted: 35 18% 88%;
+    --muted-foreground: 28 15% 35%;
+
+    /* Dourado discreto */
+    --accent: 38 55% 52%;
+    --accent-foreground: 25 25% 12%;
+
+    --destructive: 0 70% 45%;
+    --destructive-foreground: 38 40% 96%;
+
+    --border: 32 18% 82%;
+    --input: 32 18% 82%;
+    --ring: 82 22% 28%;
+
+    --radius: 0.25rem;
+
+    /* Tons especiais */
+    --cream: 38 35% 94%;
+    --cream-deep: 35 25% 88%;
+    --olive-deep: 82 22% 18%;
+    --coffee: 25 30% 16%;
+    --gold: 38 55% 52%;
+    --gold-soft: 38 45% 70%;
+
+    /* Gradientes */
+    --gradient-hero: linear-gradient(180deg, hsl(25 30% 8% / 0.15) 0%, hsl(25 30% 8% / 0.55) 70%, hsl(25 30% 8% / 0.85) 100%);
+    --gradient-warm: linear-gradient(135deg, hsl(38 35% 96%) 0%, hsl(35 25% 88%) 100%);
+    --gradient-dark: linear-gradient(135deg, hsl(25 30% 14%) 0%, hsl(82 22% 18%) 100%);
+
+    /* Sombras */
+    --shadow-soft: 0 4px 24px -8px hsl(25 30% 16% / 0.18);
+    --shadow-elegant: 0 20px 60px -20px hsl(25 30% 16% / 0.35);
+    --shadow-photo: 0 30px 80px -30px hsl(25 30% 16% / 0.5);
+
+    /* Easing */
+    --ease-elegant: cubic-bezier(0.22, 1, 0.36, 1);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', system-ui, sans-serif;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1, h2, h3, h4, .font-serif {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background: hsl(var(--accent) / 0.4);
+    color: hsl(var(--foreground));
+  }
+}
+
+@layer components {
+  .container-editorial {
+    @apply mx-auto px-6 md:px-12;
+    max-width: 1400px;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    transition: opacity 1s var(--ease-elegant), transform 1s var(--ease-elegant);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .reveal-delay-1 { transition-delay: 0.12s; }
+  .reveal-delay-2 { transition-delay: 0.24s; }
+  .reveal-delay-3 { transition-delay: 0.36s; }
+  .reveal-delay-4 { transition-delay: 0.48s; }
+
+  .photo-frame {
+    @apply relative overflow-hidden cursor-zoom-in bg-muted;
+    box-shadow: var(--shadow-soft);
+    transition: box-shadow 0.6s var(--ease-elegant);
+  }
+  .photo-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: hsl(25 30% 8% / 0);
+    transition: background 0.5s var(--ease-elegant);
+    pointer-events: none;
+  }
+  .photo-frame:hover {
+    box-shadow: var(--shadow-elegant);
+  }
+  .photo-frame:hover::after {
+    background: hsl(25 30% 8% / 0.18);
+  }
+  .photo-frame img,
+  .photo-frame .ph-inner {
+    transition: transform 1.2s var(--ease-elegant);
+    will-change: transform;
+  }
+  .photo-frame:hover img,
+  .photo-frame:hover .ph-inner {
+    transform: scale(1.06);
+  }
+
+  .photo-zoom-icon {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.4s var(--ease-elegant);
+    z-index: 2;
+    pointer-events: none;
+  }
+  .photo-frame:hover .photo-zoom-icon {
+    opacity: 1;
+  }
+
+  .divider-ornament {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: hsl(var(--accent));
+  }
+  .divider-ornament::before,
+  .divider-ornament::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(var(--accent) / 0.5), transparent);
+  }
+
+  .eyebrow {
+    @apply uppercase tracking-[0.32em] text-xs font-medium;
+    color: hsl(var(--accent));
+  }
+}
+
+/* Placeholder animado para fotos/vídeo */
+.placeholder-art {
+  background:
+    linear-gradient(135deg, hsl(var(--cream-deep)) 0%, hsl(35 20% 78%) 50%, hsl(var(--cream-deep)) 100%);
+  background-size: 200% 200%;
+  animation: shimmer 6s ease-in-out infinite;
+  position: relative;
+}
+.placeholder-art::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 30% 40%, hsl(82 22% 28% / 0.08) 0%, transparent 50%),
+    radial-gradient(circle at 70% 60%, hsl(38 55% 52% / 0.1) 0%, transparent 50%);
+}
+@keyframes shimmer {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+/* Lightbox */
+.lightbox-enter {
+  animation: lightboxIn 0.4s var(--ease-elegant) forwards;
+}
+@keyframes lightboxIn {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Scroll hint */
+@keyframes scrollHint {
+  0%, 100% { transform: translateY(0); opacity: 0.6; }
+  50% { transform: translateY(8px); opacity: 1; }
+}
+.animate-scroll-hint { animation: scrollHint 2.4s ease-in-out infinite; }
+
+/* Slow zoom para hero */
+@keyframes slowZoom {
+  from { transform: scale(1); }
+  to { transform: scale(1.08); }
+}
+.animate-slow-zoom { animation: slowZoom 18s ease-out forwards; }
