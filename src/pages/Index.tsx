@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronDown, Play, MapPin, Home, Trees, Bath, Bed, Waves, Wifi, Wind, Mail, MessageCircle, ExternalLink } from "lucide-react";
+import { ChevronDown, Play, MapPin, Home, Trees, Bath, Bed, Waves, Wifi, Wind, MessageCircle, ExternalLink } from "lucide-react";
 import { Nav } from "@/components/Nav";
 import { Reveal } from "@/components/Reveal";
 import { PhotoPlaceholder } from "@/components/PhotoPlaceholder";
@@ -395,13 +395,15 @@ const Index = () => {
               </a>
 
               <a
-                href="mailto:vitor.casadei2@gmail.com?subject=Interesse%20no%20s%C3%ADtio%20em%20Charqueada-SP"
+                href="https://wa.me/5515991943713?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20s%C3%ADtio%20em%20Charqueada-SP."
+                target="_blank"
+                rel="noreferrer"
                 className="group inline-flex items-center justify-center gap-3 border border-cream/40 hover:border-gold hover:bg-cream/5 text-cream px-10 py-5 transition-all duration-500"
               >
-                <Mail className="h-5 w-5" strokeWidth={1.5} />
+                <MessageCircle className="h-5 w-5" strokeWidth={1.5} />
                 <div className="text-left">
-                  <span className="block eyebrow !text-cream/50">E-mail</span>
-                  <span className="block font-serif text-lg">vitor.casadei2@gmail.com</span>
+                  <span className="block eyebrow !text-cream/50">WhatsApp</span>
+                  <span className="block font-serif text-xl">(15) 99194-3713</span>
                 </div>
               </a>
             </div>
