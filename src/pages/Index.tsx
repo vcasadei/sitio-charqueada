@@ -325,15 +325,13 @@ const Index = () => {
             <p className="mt-4 text-muted-foreground font-light">
               Charqueada — São Paulo. A 5 minutos do centro da cidade, com acesso a comércio, serviços, escolas e internet rápida.
             </p>
-            <a
-              href="https://wa.me/5515991943713?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20s%C3%ADtio%20em%20Charqueada-SP%20e%20gostaria%20de%20saber%20mais%20sobre%20a%20localiza%C3%A7%C3%A3o."
-              target="_blank"
-              rel="noreferrer"
+            <button
+              onClick={() => document.getElementById("contato")?.scrollIntoView({ behavior: "smooth", block: "start" })}
               className="mt-8 inline-flex items-center gap-2 bg-gold hover:bg-coffee text-cream px-8 py-4 transition-colors text-sm uppercase tracking-[0.2em] font-medium shadow-elegant"
             >
               <MessageCircle className="h-4 w-4" />
               Entre em contato para Saber Mais
-            </a>
+            </button>
           </Reveal>
         </div>
       </section>
