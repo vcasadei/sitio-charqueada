@@ -34,26 +34,26 @@ export const Nav = () => {
       }`}
     >
       <div className="container-editorial flex items-center justify-between">
-        <a
-          href="#inicio"
-          className={`font-serif text-xl md:text-2xl tracking-wide transition-colors ${
+        <button
+          onClick={() => scrollToSection("inicio")}
+          className={`font-serif text-xl md:text-2xl tracking-wide transition-colors text-left ${
             scrolled ? "text-coffee" : "text-cream"
           }`}
         >
           Sítio <span className="italic text-gold">Charqueada</span>
-        </a>
+        </button>
 
         <nav className="hidden md:flex items-center gap-8">
           {links.map((l) => (
-            <a
-              key={l.href}
-              href={l.href}
+            <button
+              key={l.id}
+              onClick={() => scrollToSection(l.id)}
               className={`text-xs uppercase tracking-[0.25em] font-medium transition-colors hover:text-gold ${
                 scrolled ? "text-coffee/80" : "text-cream/90"
               }`}
             >
               {l.label}
-            </a>
+            </button>
           ))}
         </nav>
 
