@@ -70,14 +70,16 @@ export const Nav = () => {
         <div className="md:hidden bg-cream/98 backdrop-blur-md border-t border-border mt-3 animate-fade-in">
           <nav className="container-editorial flex flex-col py-6 gap-4">
             {links.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                onClick={() => setOpen(false)}
-                className="text-coffee text-sm uppercase tracking-[0.25em] font-medium py-2"
+              <button
+                key={l.id}
+                onClick={() => {
+                  setOpen(false);
+                  scrollToSection(l.id);
+                }}
+                className="text-coffee text-sm uppercase tracking-[0.25em] font-medium py-2 text-left"
               >
                 {l.label}
-              </a>
+              </button>
             ))}
           </nav>
         </div>
