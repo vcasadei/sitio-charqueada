@@ -2,13 +2,19 @@ import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 
 const links = [
-  { href: "#inicio", label: "Início" },
-  { href: "#video", label: "Vídeo" },
-  { href: "#sobre", label: "Sobre" },
-  { href: "#galerias", label: "Galerias" },
-  { href: "#vista-aerea", label: "Vista Aérea" },
-  { href: "#contato", label: "Contato" },
+  { id: "inicio", label: "Início" },
+  { id: "video", label: "Vídeo" },
+  { id: "sobre", label: "Sobre" },
+  { id: "galerias", label: "Galerias" },
+  { id: "vista-aerea", label: "Vista Aérea" },
+  { id: "contato", label: "Contato" },
 ];
+
+const scrollToSection = (id: string) => {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.scrollIntoView({ behavior: "smooth", block: "start" });
+};
 
 export const Nav = () => {
   const [scrolled, setScrolled] = useState(false);
